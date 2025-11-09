@@ -1,19 +1,27 @@
 import React, { useState } from 'react';
-import TrackButton from "./components/TrackButton";
-import TrackText from "./components/TrackText";
+
+// 必要に応じて、他のimport文（例：import './App.css';）は残しておいてください。
 
 function App() {
-  const [text, setText] = useState("");
-  const onClick = () => {
-    setText("hello track");
-  }
+  // ステートでテキストの表示/非表示を管理
+  const [showText, setShowText] = useState(false);
+
+  // クリック時のハンドラ
+  const handleClick = () => {
+    setShowText(true);
+  };
 
   return (
-    <div style={{
-      textAlign: "center",
-    }}>
-      <TrackButton onClick={onClick} />
-      <TrackText text={text}/>
+    <div>
+      {/* 仕様通り ID: track-button を設定 */}
+      <button id="track-button" onClick={handleClick}>
+        Click me!!
+      </button>
+
+      {/* 仕様通り ID: track-text を設定し、条件付きでテキストを表示 */}
+      <div id="track-text">
+        {showText ? 'hello track' : null}
+      </div>
     </div>
   );
 }
